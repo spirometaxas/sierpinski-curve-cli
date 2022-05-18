@@ -1,0 +1,32 @@
+{
+  "name": "sierpinski-curve-cli",
+  "version": "0.0.1",
+  "description": "Print the Sierpinski Curve to the console!",
+  "main": "./src/index.js",
+  "bin": {
+    "sierpinski-curve-cli": "./src/cli.js"
+  },
+  "files": [
+    "src"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/spirometaxas/sierpinski-curve-cli.git"
+  },
+  "scripts": {
+    "cli": "node ./src/cli.js"
+  },
+  "author": "Spiro Metaxas",
+  "license": "MIT",
+  "keywords": [ 
+    "Sierpinski", 
+    "Sierpinski Curve", 
+    "fractals", 
+    "sierpinski-curve-cli", 
+    "cli",
+    "console",
+    "terminal",
+    "shell",
+    "unicode" 
+  ]
+}

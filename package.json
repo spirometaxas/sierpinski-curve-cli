@@ -1,7 +1,7 @@
 {
   "name": "sierpinski-curve-cli",
-  "version": "0.0.1",
-  "description": "Print the Sierpinski Curve to the console!",
+  "version": "1.0.0",
+  "description": "Print the Sierpinski (Square) Curve to the console!",
   "main": "./src/index.js",
   "bin": {
     "sierpinski-curve-cli": "./src/cli.js"

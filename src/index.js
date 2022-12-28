@@ -14,6 +14,56 @@ const getHeight = function(n) {
   return (count * 4) + 2;
 }
 
+const LINES = {
+  '─': {
+    STANDARD: '─',
+    BOLD: '━',
+    DOUBLE: '═',
+  },
+  '│': {
+    STANDARD: '│',
+    BOLD: '┃',
+    DOUBLE: '║',
+  },
+  '┌': {
+    STANDARD: '┌',
+    BOLD: '┏',
+    DOUBLE: '╔',
+  },
+  '┐': {
+    STANDARD: '┐',
+    BOLD: '┓',
+    DOUBLE: '╗',
+  },
+  '┘': {
+    STANDARD: '┘',
+    BOLD: '┛',
+    DOUBLE: '╝',
+  },
+  '└': {
+    STANDARD: '└',
+    BOLD: '┗',
+    DOUBLE: '╚',
+  },
+};
+
+const getLine = function(lineId, lineType) {
+  if (LINES[lineId] !== undefined && lineType !== undefined) {
+    return LINES[lineId][lineType.toUpperCase()];
+  } else if (LINES[lineId] !== undefined) {
+    return LINES[lineId].STANDARD;
+  } else {
+    return ' ';
+  }
+}
+
+const getLineType = function(line) {
+  if (line !== undefined && (line.toLowerCase() === 'standard' || line.toLowerCase() === 'double' || line.toLowerCase() === 'bold')) {
+    return line.toLowerCase();
+  }
+  return 'standard';
+}
+
 const createBoard = function(w, h) {
   let board = [];
   for (let i = 0; i < h; i++) {
@@ -142,25 +192,27 @@ const sierpinski = function(n, board, pos, type) {
   }
 }
 
-const draw = function(board) {
+const draw = function(board, lineType) {
   var result = '\n ';
   for (let i = 0; i < board.length; i++) {
     for (let j = 0; j < board[i].length; j++) {
-      result += board[board.length - i - 1][j];
+      result += getLine(board[board.length - i - 1][j], lineType);
     }
     result += '\n ';
   }
   return result;
 }
 
-const create = function(n) {
+const create = function(n, config) {
   if (n === undefined || n < 0) {
     return '';
   }
 
+  const lineType = config !== undefined ? getLineType(config.line) : undefined;
+
   const board = createBoard(getWidth(n), getHeight(n));
   sierpinski(n, board, { x: parseInt(getWidth(n) / 2.0), y: parseInt(getHeight(n) / 2.0) } );
-  return draw(board);
+  return draw(board, lineType);
 }
 
 module.exports = {

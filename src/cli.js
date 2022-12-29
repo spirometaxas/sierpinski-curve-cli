@@ -62,8 +62,8 @@ if (process.argv.length > 2) {
     const params = process.argv.slice(2);
     const values = getValues(params);
     const flags = getFlags(params);
-    if (params[0] && !isNaN(params[0]) && parseInt(params[0]) >= 0) {
-        var n = parseInt(params[0]);
+    if (values[0] && !isNaN(values[0]) && parseInt(values[0]) >= 0) {
+        var n = parseInt(values[0]);
         if (n !== undefined) {
             console.log(sierpinski.create(n, { line: getLine(flags) }));
         }
